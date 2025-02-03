@@ -1,0 +1,64 @@
+{
+    "version": 1,
+    "author": "Isaque Ribeiro de Andrade",
+    "editor": "wokwi",
+    "parts": [
+      { "type": "board-pi-pico-w", "id": "pico", "top": -32.05, "left": 70.75, "attrs": {} },
+      {
+        "type": "wokwi-led",
+        "id": "led_vermelho",
+        "top": 44.4,
+        "left": -121,
+        "attrs": { "color": "red" }
+      },
+      {
+        "type": "wokwi-led",
+        "id": "led_amarelo",
+        "top": 82.8,
+        "left": -121,
+        "attrs": { "color": "yellow" }
+      },
+      {
+        "type": "wokwi-led",
+        "id": "led_verde",
+        "top": 121.2,
+        "left": -121,
+        "attrs": { "color": "green" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "resistor_vermelho",
+        "top": 80.75,
+        "left": -57.6,
+        "attrs": { "value": "330" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "resistor_amarelo",
+        "top": 119.15,
+        "left": -57.6,
+        "attrs": { "value": "330" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "resistor_verde",
+        "top": 157.55,
+        "left": -57.6,
+        "attrs": { "value": "330" }
+      }
+    ],
+    "connections": [
+      [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+      [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+      [ "led_vermelho:A", "resistor_vermelho:1", "green", [ "v0", "h28.8" ] ],
+      [ "led_amarelo:A", "resistor_amarelo:1", "green", [ "v0" ] ],
+      [ "led_verde:A", "resistor_verde:1", "green", [ "v0", "h19.2", "v-19.2" ] ],
+      [ "resistor_vermelho:2", "pico:GP11", "green", [ "h46.8", "v28.8" ] ],
+      [ "resistor_amarelo:2", "pico:GP12", "green", [ "h18", "v-0.04" ] ],
+      [ "resistor_verde:2", "pico:GP13", "green", [ "h46.8", "v0", "v-28.84" ] ],
+      [ "pico:GND.2", "led_verde:C", "black", [ "h-220.8", "v115.2" ] ],
+      [ "led_vermelho:C", "pico:GND.2", "green", [ "v0", "h-38", "v0", "h0", "v19.2" ] ],
+      [ "led_amarelo:C", "pico:GND.2", "green", [ "v0", "h-38", "v-76.8" ] ]
+    ],
+    "dependencies": {}
+  }
